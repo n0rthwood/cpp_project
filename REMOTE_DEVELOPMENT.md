@@ -9,43 +9,56 @@ The remote development configuration is stored in `.dev_config.yaml`:
 - Workspace path: /opt/workspace/
 - Repository: git@github.com:n0rthwood/cpp_project.git
 
-## Quick Start
+## Docker Development Environment
 
-1. Clone the repository:
+The project uses Docker for consistent development environments. The following files are provided:
+- `Dockerfile` - Defines the development environment
+- `docker_dev.sh` - Script to manage the Docker environment
+
+### Quick Start with Docker
+
+1. Build the Docker image:
 ```bash
-git clone git@github.com:n0rthwood/cpp_project.git
-cd cpp_project
+./docker_dev.sh build
 ```
 
-2. Use the remote development script:
+2. Start the development container:
 ```bash
-# Sync local files to remote
-./remote_dev.sh sync
-
-# Build on remote
-./remote_dev.sh build
-
-# Run tests on remote
-./remote_dev.sh test
-
-# Test Python extension
-./remote_dev.sh python
-
-# Or do all of the above
-./remote_dev.sh all
+./docker_dev.sh start
 ```
 
-## Development Workflow
+3. Enter the container:
+```bash
+./docker_dev.sh exec
+```
+
+4. Build and test inside the container:
+```bash
+./build.sh
+```
+
+### Docker Commands
+
+- Build image: `./docker_dev.sh build`
+- Start container: `./docker_dev.sh start`
+- Stop container: `./docker_dev.sh stop`
+- Restart container: `./docker_dev.sh restart`
+- Execute command: `./docker_dev.sh exec [command]`
+- Check status: `./docker_dev.sh status`
+
+## Standard Development Workflow
 
 1. Make changes locally
 2. Commit and push to GitHub
 3. Sync to remote: `./remote_dev.sh sync`
-4. Build and test: `./remote_dev.sh build && ./remote_dev.sh test`
-5. Test Python extension: `./remote_dev.sh python`
+4. Enter Docker container: `./docker_dev.sh exec`
+5. Build and test: `./build.sh`
 
 ## Troubleshooting
 
 If you encounter issues:
 1. Check SSH connection: `ssh joysort@10.10.50.10`
-2. Verify remote workspace exists: `ssh joysort@10.10.50.10 "ls -la /opt/workspace/"`
-3. Check build logs: `ssh joysort@10.10.50.10 "cat /opt/workspace/cpp_project/build/CMakeFiles/CMakeError.log"`
+2. Verify Docker is running: `docker ps`
+3. Check Docker logs: `docker logs cpp_project_dev_container`
+4. Rebuild Docker image: `./docker_dev.sh build`
+5. Check build logs in container: `./docker_dev.sh exec cat build/CMakeFiles/CMakeError.log`
