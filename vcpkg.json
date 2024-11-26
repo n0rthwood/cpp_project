@@ -1,0 +1,53 @@
+{
+    "name": "cpp-project",
+    "version": "1.0.0",
+    "dependencies": [
+        {
+            "name": "spdlog",
+            "version>=": "1.12.0"
+        },
+        {
+            "name": "curl",
+            "version>=": "8.2.1"
+        },
+        {
+            "name": "nlohmann-json",
+            "version>=": "3.11.2"
+        },
+        {
+            "name": "yaml-cpp",
+            "version>=": "0.7.0"
+        },
+        {
+            "name": "opencv4",
+            "version>=": "4.8.0"
+        },
+        {
+            "name": "cpprestsdk",
+            "version>=": "2.10.19"
+        },
+        {
+            "name": "openssl",
+            "version>=": "3.1.2"
+        },
+        {
+            "name": "zlib",
+            "version>=": "1.3"
+        },
+        {
+            "name": "pybind11",
+            "version>=": "2.11.1"
+        },
+        {
+            "name": "gtest",
+            "version>=": "1.11.0"
+        }
+    ],
+    "builtin-baseline": "8875aa3cd9b3b62e7c7207ee172cebd0c944abca",
+    "overrides": [
+        {
+            "name": "opencv4",
+            "version": "4.8.0"
+        }
+    ]
+}

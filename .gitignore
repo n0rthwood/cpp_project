@@ -1,0 +1,52 @@
+# Build directories
+build/
+_build/
+Release/
+Debug/
+install/
+bin/
+lib/
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+
+# IDE specific files
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Compiled files
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.lib
+*.a
+*.exp
+*.pdb
+*.ilk
+*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+.eggs/
+
+# Conan
+conan.lock
+conanbuildinfo.*
+conaninfo.txt
+graph_info.json
+
+# Package management
+vcpkg_installed/
+
+venv/
