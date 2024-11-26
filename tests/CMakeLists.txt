@@ -19,8 +19,7 @@ target_link_libraries(test_core
 add_test(NAME CoreTest COMMAND test_core)
 
 # Set include directories
-target_include_directories(test_core
-    PRIVATE
+target_include_directories(test_core 
+    PRIVATE 
     ${CMAKE_SOURCE_DIR}/src
-    ${CMAKE_SOURCE_DIR}/src/core
 )

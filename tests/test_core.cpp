@@ -1,10 +1,12 @@
 #include <gtest/gtest.h>
 #include "core/logger.h"
+#include "core_lib.hpp"
 
 // Basic test case for logger
 TEST(LoggerTest, HelloWorld) {
     // Call the function
-    helloworld();
+    joysort::CoreLib coreLib;
+    coreLib.helloWorld();
     
     // Since we're using spdlog, we can't easily capture the output
     // This test just verifies the function runs without crashing
