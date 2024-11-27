@@ -1,0 +1,13 @@
+name: cpp_project_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pip
+  - setuptools
+  - wheel
+  - conda-build  # For development tools
+  - compilers    # Required for building extensions
+  - pip:
+    - pybind11  # For Python/C++ bindings
