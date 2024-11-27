@@ -21,6 +21,21 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+# Platform-specific settings
+if(WIN32)
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    add_definitions(-D_WIN32_WINNT=0x0601)
+    if(MSVC)
+        add_compile_options(/W4 /MP)
+    endif()
+elseif(APPLE)
+    add_compile_options(-Wall -Wextra)
+    set(CMAKE_MACOSX_RPATH ON)
+else()
+    add_compile_options(-Wall -Wextra)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
+
 # Options
 option(BUILD_PYTHON_BINDINGS "Build Python bindings" ON)
 option(BUILD_TESTS "Build tests" OFF)
@@ -45,7 +60,11 @@ add_subdirectory(src)
 if(BUILD_PYTHON_BINDINGS)
     add_subdirectory(python)
 endif()
-add_subdirectory(tests)
+
+if(BUILD_TESTS)
+    enable_testing()
+    add_subdirectory(tests)
+endif()
 
 # Install targets
 install(EXPORT ${PROJECT_NAME}Targets

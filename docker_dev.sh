@@ -38,7 +38,9 @@ start_container() {
             --name ${CONTAINER_NAME} \
             -v ${WORKSPACE_DIR}:/workspace \
             -w /workspace \
-            ${IMAGE_NAME}
+            --init \
+            ${IMAGE_NAME} \
+            sleep infinity
     fi
 }
 

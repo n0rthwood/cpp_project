@@ -83,6 +83,119 @@ The build process generates several artifacts in the `release/` directory:
 - `python38_bindings.tar.gz` - Python 3.8 bindings
 - `python39_bindings.tar.gz` - Python 3.9 bindings
 
+## Remote Development Environment
+
+This project includes a robust remote development environment using Docker containers. The environment is designed to provide a consistent development experience across different machines and platforms.
+
+### Prerequisites
+
+1. SSH access to the remote development server
+2. Docker and Docker Compose installed on the remote server
+3. SSH key-based authentication set up on your local machine
+
+### Directory Structure
+
+```
+linux_docker_dev/
+├── Dockerfile           # Container configuration
+├── docker-compose.yml  # Service definitions
+├── dev_env.sh         # Environment management script
+└── setup-ssh.sh       # SSH configuration script
+```
+
+### Environment Features
+
+- Ubuntu 22.04 LTS base image
+- GCC/G++ compiler suite
+- CMake build system
+- Python 3 with pip
+- Non-root user setup
+- SSH server for remote access
+- Persistent workspace volume
+
+### Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd cpp_project
+   ```
+
+2. Configure Remote Access:
+   - Ensure your SSH public key is added to the remote server
+   - Update the `REMOTE_HOST` variable in `linux_docker_dev/dev_env.sh` if needed
+
+3. Start the Development Environment:
+   ```bash
+   ./linux_docker_dev/dev_env.sh start
+   ```
+
+4. Connect to the Development Container:
+   ```bash
+   ./linux_docker_dev/dev_env.sh ssh
+   ```
+
+### Available Commands
+
+The `dev_env.sh` script provides several commands:
+
+- `start`: Start the development environment
+- `stop`: Stop the development environment
+- `ssh`: Connect to the development container
+- `status`: Show environment status
+- `clean`: Clean up Docker resources
+
+### Usage Example
+
+1. Start the environment:
+   ```bash
+   ./linux_docker_dev/dev_env.sh start
+   ```
+
+2. Connect to the container:
+   ```bash
+   ./linux_docker_dev/dev_env.sh ssh
+   ```
+
+3. Inside the container, your workspace is mounted at `/workspace`:
+   ```bash
+   cd /workspace
+   ./build.sh
+   ```
+
+4. When finished, stop the environment:
+   ```bash
+   ./linux_docker_dev/dev_env.sh stop
+   ```
+
+### Troubleshooting
+
+1. If you can't connect to the container:
+   - Check if the container is running: `./linux_docker_dev/dev_env.sh status`
+   - Ensure SSH keys are properly set up
+   - Try cleaning up and restarting: `./linux_docker_dev/dev_env.sh clean && ./linux_docker_dev/dev_env.sh start`
+
+2. If the build fails:
+   - Verify all dependencies are installed
+   - Check if the workspace is properly mounted
+   - Review build logs for specific errors
+
+### Security Considerations
+
+- The development container runs with a non-root user
+- SSH access is key-based only
+- Root login is disabled
+- Container has minimal installed packages
+- Workspace permissions are properly set
+
+### Best Practices
+
+1. Always use the provided scripts to manage the environment
+2. Keep your SSH keys secure
+3. Regularly update the base image and dependencies
+4. Use version control for all project files
+5. Back up important data outside the container
+
 ## License
 
 [Your License]

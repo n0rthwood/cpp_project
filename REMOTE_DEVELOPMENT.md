@@ -1,6 +1,7 @@
 # Remote Development Guide
 
-This guide explains how to work with the remote development environment for this project.
+This guide explains how to work with the remote development environment for this project. it should be done through ssh session and use remote docker for debug and test and build.
+To use docker for testing, we have deockerfile and docker-compose which is used to setup and run docker. after you start the env, you should ssh to it and run development as if you are inside the linux server
 
 ## Configuration
 

@@ -4,11 +4,11 @@
     "dependencies": [
         {
             "name": "spdlog",
-            "version>=": "1.12.0"
+            "version>=": "1.11.0"
         },
         {
             "name": "curl",
-            "version>=": "8.2.1"
+            "version>=": "7.88.1#1"
         },
         {
             "name": "nlohmann-json",
@@ -20,34 +20,21 @@
         },
         {
             "name": "opencv4",
-            "version>=": "4.8.0"
+            "version>=": "4.7.0#3"
         },
         {
             "name": "cpprestsdk",
-            "version>=": "2.10.19"
+            "version>=": "2.10.18#2"
         },
         {
             "name": "openssl",
-            "version>=": "3.1.2"
-        },
-        {
-            "name": "zlib",
-            "version>=": "1.3"
+            "version>=": "3.1.0"
         },
         {
             "name": "pybind11",
-            "version>=": "2.11.1"
-        },
-        {
-            "name": "gtest",
-            "version>=": "1.11.0"
+            "version>=": "2.10.3"
         }
     ],
-    "builtin-baseline": "8875aa3cd9b3b62e7c7207ee172cebd0c944abca",
-    "overrides": [
-        {
-            "name": "opencv4",
-            "version": "4.8.0"
-        }
-    ]
+    "builtin-baseline": "068d45478f5536589e19f83344749379724b3225",
+    "supports": "!uwp"
 }
