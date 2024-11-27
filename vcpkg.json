@@ -1,6 +1,7 @@
 {
     "name": "cpp-project",
     "version": "1.0.0",
+    "builtin-baseline": "8875aa3cd9b3b62e7c7207ee172cebd0c944abca",
     "dependencies": [
         {
             "name": "spdlog",
@@ -35,6 +36,5 @@
             "version>=": "2.10.3"
         }
     ],
-    "builtin-baseline": "068d45478f5536589e19f83344749379724b3225",
     "supports": "!uwp"
 }

@@ -6,6 +6,7 @@ Debug/
 install/
 bin/
 lib/
+out/
 
 # CMake files
 CMakeCache.txt
@@ -48,5 +49,10 @@ graph_info.json
 
 # Package management
 vcpkg_installed/
+
+# Platform-specific environment markers
+.linux_env_prepared
+.macos_env_prepared
+.windows_env_prepared
 
 venv/
