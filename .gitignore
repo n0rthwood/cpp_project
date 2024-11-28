@@ -56,3 +56,5 @@ vcpkg_installed/
 .windows_env_prepared
 
 venv/
+thirdparty/
+vcpkg/

@@ -69,11 +69,38 @@ The build script will:
 
 ## Project Structure
 
+### Core Components
 - `src/` - Core library and application source files
 - `python/` - Python bindings
 - `include/` - Public header files
 - `build/` - Build artifacts
 - `release/` - Release packages
+
+### Build System
+- `build.ps1` - Main build script (PowerShell)
+- `build.bat` - Windows batch wrapper for build.ps1
+- `CMakeLists.txt` - CMake configuration
+- `vcpkg.json` - Dependencies specification
+
+### Environment Setup Scripts
+Located in `scripts/`:
+- `download_thirdparty.ps1/sh` - Downloads third-party packages not available in vcpkg
+- `python_env_manage.ps1/sh` - Manages Python environment setup
+- `windows_env_prepare.ps1` - Prepares Windows development environment
+- `linux_env_prepare.sh` - Prepares Linux development environment
+- `macos_env_prepare.sh` - Prepares macOS development environment
+
+### Third-party Dependencies
+- `thirdparty/` - Contains manually downloaded dependencies not available in vcpkg
+- `thirdparty_deps.yaml` - Configuration for third-party dependencies
+- Dependencies are managed through:
+  1. vcpkg for most packages
+  2. Manual downloads (via download_thirdparty scripts) for packages not in vcpkg
+
+### Docker Development (Linux)
+Located in `linux_docker_dev/`:
+- Contains Docker configuration and scripts for Linux development
+- Includes remote development setup scripts
 
 ## Output Artifacts
 
