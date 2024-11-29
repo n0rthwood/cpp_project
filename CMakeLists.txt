@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(cpp_project VERSION 1.0.0)
 
-# Global settings
+# Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -10,39 +10,19 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-# vcpkg integration
-if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
-    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
-        CACHE STRING "")
-endif()
+# Set MMDeploy and dependency paths
+set(MMDEPLOY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/mmdeploy/mmdeploy-1.1.0-linux-x86_64-cxx11abi-cuda11.3)
+set(TENSORRT_DIR ${MMDEPLOY_DIR}/thirdparty/tensorrt)
+set(ONNXRUNTIME_DIR ${MMDEPLOY_DIR}/thirdparty/onnxruntime)
+list(APPEND CMAKE_PREFIX_PATH ${MMDEPLOY_DIR})
 
-if(DEFINED ENV{VCPKG_DEFAULT_TRIPLET} AND NOT DEFINED VCPKG_TARGET_TRIPLET)
-    set(VCPKG_TARGET_TRIPLET "$ENV{VCPKG_DEFAULT_TRIPLET}" CACHE STRING "")
-endif()
+# Find CUDA
+find_package(CUDA 11.3 REQUIRED)
+include_directories(${CUDA_INCLUDE_DIRS})
 
-# Find and setup all dependencies
-find_package(spdlog CONFIG REQUIRED)
-find_package(fmt CONFIG REQUIRED)
+# Set CUDA runtime library path
+link_directories(${CUDA_TOOLKIT_ROOT_DIR}/lib64)
 
-# Add js_lib (core library)
+# Add subdirectories
 add_subdirectory(js_lib)
-
-# Optional components
-option(BUILD_NATIVE_APP "Build native application" ON)
-option(BUILD_PYTHON_EXT "Build Python extension" ON)
-
-if(BUILD_NATIVE_APP)
-    add_subdirectory(native_app)
-endif()
-
-if(BUILD_PYTHON_EXT)
-    find_package(Python COMPONENTS Interpreter Development REQUIRED)
-    include(FetchContent)
-    FetchContent_Declare(
-        pybind11
-        GIT_REPOSITORY https://github.com/pybind/pybind11.git
-        GIT_TAG        v2.11.1
-    )
-    FetchContent_MakeAvailable(pybind11)
-    add_subdirectory(python_ext)
-endif()
+add_subdirectory(native_app)
