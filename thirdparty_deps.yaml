@@ -15,30 +15,22 @@ dependencies:
       url: "http://tianan2.riadev.top:39800/filebrowser/api/public/dl/veqbRRyo/opt/image_store1/models/build_dependency/mmdeploy-1.1.0-windows-amd64-cuda11.3.zip"
       cmake_path: "mmdeploy"
 
-    pybind11:
-      version: "v2.10.4"
-      urls:
-        windows: "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.4.zip"
-      extract_dir: "pybind11-2.10.4"
+   
 
   linux:
-    cudnn:
-      version: "8.9.0.131_cuda11"
-      url: "http://tianan2.riadev.top:39800/filebrowser/api/public/dl/your_linux_cudnn_url"
-      cmake_path: "cuda"
+    # cudnn:
+    #   version: "8.9.0.131_cuda11"
+    #   url: "http://tianan2.riadev.top:39800/filebrowser/api/public/dl/your_linux_cudnn_url"
+    #   cmake_path: "cuda"
 
-    tensorrt:
-      version: "8.6.1.6_cuda11.8"
-      url: "http://tianan2.riadev.top:39800/filebrowser/api/public/dl/o1j0agp7/opt/image_store1/models/build_dependency/TensorRT-8.6.1.6.Windows10.x86_64.cuda-11.8.zip"
-      cmake_path: "TensorRT-8.6.1.6"
+    # tensorrt:
+    #   version: "8.6.1.6_cuda11.8"
+    #   url: "http://tianan2.riadev.top:39800/filebrowser/api/public/dl/o1j0agp7/opt/image_store1/models/build_dependency/TensorRT-8.6.1.6.Windows10.x86_64.cuda-11.8.zip"
+    #   cmake_path: "TensorRT-8.6.1.6"
 
     mmdeploy:
       version: "1.1.0_cuda11.3"
-      url: "http://tianan2.riadev.top:39800/filebrowser/api/public/dl/your_linux_mmdeploy_url"
+      url: "https://github.com/open-mmlab/mmdeploy/releases/download/v1.1.0/mmdeploy-1.1.0-linux-x86_64-cxx11abi-cuda11.3.tar.gz"
       cmake_path: "mmdeploy"
 
-    pybind11:
-      version: "v2.10.4"
-      urls:
-        linux: "https://github.com/pybind/pybind11/archive/refs/tags/v2.10.4.tar.gz"
-      extract_dir: "pybind11-2.10.4"
+    
